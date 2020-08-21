@@ -1,12 +1,20 @@
-import { ApolloServer } from "apollo-server";
+import dotenv from "dotenv";
+dotenv.config({ path: `./.env.${process.env.NODE_ENV}` });
+import { connect } from "./mongodb/connect";
+
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
-
+import { ApolloServer } from "apollo-server";
 import typeDefs from "./typeDefs";
 import resolvers from "./resolvers";
-const server = new ApolloServer({ typeDefs, resolvers });
 
-// The `listen` method launches a web server.
-server.listen().then(({ url }) => {
+(async () => {
+  // Connect to MongoDB
+  await connect();
+  console.log(`Databases connected.`);
+
+  // Launch the server!
+  const server = new ApolloServer({ typeDefs, resolvers });
+  const { url } = await server.listen();
   console.log(`🚀  Server ready at ${url}`);
-});
+})();
