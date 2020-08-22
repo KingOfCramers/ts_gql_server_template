@@ -11,8 +11,8 @@ export const SharedTypes = gql`
 
 export const SharedInputTypes = gql`
   input LibraryInput {
-    startDate: Int!
-    endDate: Int!
+    startDate: String!
+    endDate: String!
     filter: String
   }
 `;

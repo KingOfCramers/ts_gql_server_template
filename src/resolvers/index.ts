@@ -38,8 +38,6 @@ const resolvers = {
       { startDate, endDate, filter }: BookArgs,
       context: any
     ) => {
-      console.log(parent);
-      console.log(context);
       return books;
     },
   },
