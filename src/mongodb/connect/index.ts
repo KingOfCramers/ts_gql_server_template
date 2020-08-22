@@ -1,5 +1,3 @@
-/* istanbul ignore file */
-
 import mongoose from "mongoose";
 
 interface Options {
@@ -27,7 +25,7 @@ export const connect = async (): Promise<any> => {
     }
 
     // If in production, just connect to Atlas
-    await mongoose.connect(process.env.MONGODB_URI, options);
+    await mongoose.connect(process.env.MONGODB_URI as string, options);
   } catch (err) {
     console.log("Could not connect to DB.");
     console.log(err);
