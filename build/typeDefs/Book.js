@@ -1,20 +1,11 @@
 "use strict";
+var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const apollo_server_1 = require("apollo-server");
-const fields_1 = require("./shared/fields");
-const Book = apollo_server_1.gql `
-  type Book {
-    title: String!
-    publicationDate: Date!
-    author: String!
-    pages: Int!
-    publisher: Publisher!
-    ${fields_1.sale}
-  }
-
-  extend type Query {
-    books: [Book!]
-  }
-`;
+var apollo_server_1 = require("apollo-server");
+var fields_1 = require("./shared/fields");
+var Book = apollo_server_1.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  type Book {\n    title: String!\n    publicationDate: Date!\n    author: String!\n    pages: Int!\n    publisher: Publisher!\n    ", "\n  }\n\n  extend type Query {\n    books: [Book!]\n  }\n"], ["\n  type Book {\n    title: String!\n    publicationDate: Date!\n    author: String!\n    pages: Int!\n    publisher: Publisher!\n    ", "\n  }\n\n  extend type Query {\n    books: [Book!]\n  }\n"])), fields_1.sale);
 exports.default = Book;
-//# sourceMappingURL=Book.js.map
+var templateObject_1;

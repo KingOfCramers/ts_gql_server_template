@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const books = [
+var books = [
     {
         title: "Harry Potter and the Chamber of Secrets",
         publicationDate: 2010,
@@ -26,10 +26,9 @@ const books = [
         inStock: false,
     },
 ];
-const resolvers = {
+var resolvers = {
     Query: {
-        books: () => books,
+        books: function () { return books; },
     },
 };
 exports.default = resolvers;
-//# sourceMappingURL=index.js.map

@@ -1,10 +1,11 @@
-const { ApolloServer, gql } = require("apollo-server");
+import { gql } from "apollo-server";
 
 // Shared types
-import SharedTypes from "./shared/types";
+import { SharedTypes, SharedInputTypes } from "./shared/types";
 
 // Types
 import Book from "./Book";
+import Magazine from "./Magazine";
 
 const typeDefs = gql`
   # Import any scalars used inside our types...
@@ -12,6 +13,9 @@ const typeDefs = gql`
 
   # Load shared types...
   ${SharedTypes}
+
+  # Load shared input types...
+  ${SharedInputTypes}
 
   type Query {
     _: String!
@@ -23,4 +27,4 @@ const typeDefs = gql`
 `;
 
 // Export all the types for final construction
-export default [typeDefs, Book];
+export default [typeDefs, Book, Magazine];

@@ -1,20 +1,19 @@
 import { gql } from "apollo-server";
 import { sale } from "./shared/fields";
 
-const Book = gql`
+const Magazine = gql`
 
-  type Book {
+  type Magazine {
     title: String!
     publicationDate: Date!
-    author: String!
     pages: Int!
     publisher: Publisher!
     ${sale}
   }
 
   extend type Query {
-    books(input: LibraryInput!): [Book!]
+    magazines(input: LibraryInput!): [Magazine!]
   }
 `;
 
-export default Book;
+export default Magazine;

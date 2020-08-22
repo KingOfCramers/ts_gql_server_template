@@ -2,11 +2,17 @@ import { gql } from "apollo-server";
 
 // These types are shared across multiple
 // Other types and are loaded first.
-const SharedTypes = gql`
+export const SharedTypes = gql`
   type Publisher {
     location: String!
     size: Int!
   }
 `;
 
-export default SharedTypes;
+export const SharedInputTypes = gql`
+  input LibraryInput {
+    startDate: Int!
+    endDate: Int!
+    filter: String
+  }
+`;

@@ -25,9 +25,23 @@ const books = [
   },
 ];
 
+interface BookArgs {
+  startDate: number;
+  endDate: number;
+  filter: string;
+}
+
 const resolvers = {
   Query: {
-    books: () => books,
+    books: (
+      parent: any,
+      { startDate, endDate, filter }: BookArgs,
+      context: any
+    ) => {
+      console.log(parent);
+      console.log(context);
+      return books;
+    },
   },
 };
 
