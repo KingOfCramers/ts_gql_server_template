@@ -2,7 +2,6 @@ import { gql } from "apollo-server";
 import { sale } from "./shared/fields";
 
 const Book = gql`
-
   type Book {
     title: String!
     publicationDate: Date!

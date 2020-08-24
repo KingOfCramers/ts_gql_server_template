@@ -7,8 +7,8 @@ interface Options {
   user?: string;
   pass?: string;
 }
-// What type is db?
-export const connect = async (): Promise<any> => {
+
+export const connect = async (): Promise<void> => {
   try {
     // Set password options if in development and mongoose logging
     const options: Options = {
@@ -41,6 +41,4 @@ export const connect = async (): Promise<any> => {
   db.on("disconnected", () => {
     console.log("Connection to MongoDB closed.");
   });
-
-  return db;
 };
