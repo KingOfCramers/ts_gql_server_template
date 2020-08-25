@@ -5,6 +5,7 @@ import path from "path";
 import { connect } from "./mongodb/connect";
 import { buildSchema } from "type-graphql";
 import { ApolloServer } from "apollo-server";
+import BookResolver from "./resolvers/book/index"; // Not the old book.ts file...
 import RecipeResolver from "./resolvers/recipe";
 
 (async () => {
@@ -12,7 +13,7 @@ import RecipeResolver from "./resolvers/recipe";
   await connect();
   console.log(`📊 Databases connected`);
   const schema = await buildSchema({
-    resolvers: [RecipeResolver],
+    resolvers: [RecipeResolver, BookResolver],
     // automatically create `schema.gql` file with schema definition in current folder
     emitSchemaFile: path.resolve(__dirname, "schema.gql"),
   });
