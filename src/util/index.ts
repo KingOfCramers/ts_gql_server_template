@@ -1,10 +1,11 @@
 import { Book, Magazine } from "../mongodb/models";
+import { BookGoose } from "../gql/book/types";
 
 export const populateDatabase = async (): Promise<void> => {
-  await Book.deleteMany({});
+  await BookGoose.deleteMany({});
   await Magazine.deleteMany({});
 
-  await Book.create({
+  await BookGoose.create({
     pages: 100,
     author: "JK Rowling",
     title: "Harry Potter",
@@ -13,7 +14,7 @@ export const populateDatabase = async (): Promise<void> => {
     publicationDate: new Date(),
   });
 
-  await Book.create({
+  await BookGoose.create({
     pages: 200,
     author: "JRR Tolkien",
     title: "Lord of the Rings",

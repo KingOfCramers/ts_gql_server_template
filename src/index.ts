@@ -6,6 +6,7 @@ import { connect } from "./mongodb/connect";
 import { buildSchema } from "type-graphql";
 import { ApolloServer } from "apollo-server";
 import { BookResolver, MagazineResolver } from "./gql";
+import { BookGoose } from "./gql/book/types";
 import { populateDatabase } from "./util";
 
 (async () => {
