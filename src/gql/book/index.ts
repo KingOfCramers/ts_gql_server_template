@@ -18,7 +18,6 @@ const books: Book[] = [
     publicationDate: new Date(),
     pages: 1000,
     inStock: false,
-    numInStock: 0,
   },
 ];
 

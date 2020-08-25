@@ -18,6 +18,8 @@ The javascript `Date` as string. Type represents date and time as the ISO Date s
 scalar DateTime
 
 type Magazine {
+  inStock: Boolean!
+  numInStock: Float
   pages: Float!
   publicationDate: DateTime!
   title: String!

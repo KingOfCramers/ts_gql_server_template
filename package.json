@@ -8,6 +8,7 @@
     "start": "tsc && node build/index.js"
   },
   "dependencies": {
+    "@typegoose/typegoose": "^7.3.3",
     "@types/mongoose": "^5.7.36",
     "apollo-server": "^2.16.1",
     "class-transformer": "^0.3.1",

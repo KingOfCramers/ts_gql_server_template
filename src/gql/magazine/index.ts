@@ -8,11 +8,15 @@ const magazines: Magazine[] = [
     title: "Playboy",
     publicationDate: new Date(),
     pages: 40,
+    inStock: true,
+    numInStock: 10,
   },
   {
     title: "Popular Mechanic",
     publicationDate: new Date(),
     pages: 100,
+    inStock: false,
+    numInStock: 0,
   },
 ];
 

@@ -6,6 +6,7 @@ import { connect } from "./mongodb/connect";
 import { buildSchema } from "type-graphql";
 import { ApolloServer } from "apollo-server";
 import { BookResolver, MagazineResolver } from "./gql";
+import { populateDatabase } from "./util";
 
 (async () => {
   // Connect to MongoDB
@@ -15,6 +16,8 @@ import { BookResolver, MagazineResolver } from "./gql";
     resolvers: [BookResolver, MagazineResolver],
     emitSchemaFile: path.resolve(__dirname, "schema.gql"),
   });
+
+  process.env.NODE_ENV === "development" && (await populateDatabase());
 
   // Launch the server!
   const server = new ApolloServer({
