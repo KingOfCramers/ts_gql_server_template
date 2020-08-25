@@ -5,6 +5,8 @@
 
 type Book {
   author: String!
+  inStock: Boolean!
+  numInStock: Float
   pages: Float!
   publicationDate: DateTime!
   title: String!
@@ -15,32 +17,22 @@ The javascript `Date` as string. Type represents date and time as the ISO Date s
 """
 scalar DateTime
 
-type Mutation {
-  addRecipe(recipe: RecipeInput!): Recipe!
+type Magazine {
+  pages: Float!
+  publicationDate: DateTime!
+  title: String!
 }
 
 type Query {
-  book(title: String!): Book
-  recipe(title: String!): Recipe
-
-  """Get all the recipes from around the world """
-  recipes: [Recipe!]!
+  allBooks: [Book!]
+  allMagazines: [Magazine!]
+  book(input: String!): Book
+  magazine(input: String!): Magazine
+  someBooks(input: ReadingInput!): [Book!]
+  someMagazines(input: ReadingInput!): [Magazine!]
 }
 
-"""Object representing cooking recipe"""
-type Recipe {
-  averageRating: Float
-  creationDate: DateTime!
-
-  """The recipe description with preparation info"""
-  description: String
-  ratings: [Int!]!
-  ratingsCount(minRate: Int = 0): Int!
-  specification: String @deprecated(reason: "Use `description` field instead")
-  title: String!
-}
-
-input RecipeInput {
-  description: String
-  title: String!
+input ReadingInput {
+  pages: Float!
+  publicationDate: DateTime!
 }

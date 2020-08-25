@@ -1,7 +1,8 @@
-import { Field, ObjectType, ID } from "type-graphql";
+import { Field, ObjectType } from "type-graphql";
+import { InStock } from "../shared/types";
 
 @ObjectType()
-export class Book {
+export class Book extends InStock {
   @Field()
   title: string;
 

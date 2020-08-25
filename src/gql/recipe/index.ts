@@ -16,7 +16,7 @@ import { RecipeInput } from "./recipe-input";
 import { createRecipeSamples } from "./recipe-samples";
 
 @Resolver((of) => Recipe)
-class RecipeResolver implements ResolverInterface<Recipe> {
+export class RecipeResolver implements ResolverInterface<Recipe> {
   private readonly items: Recipe[] = createRecipeSamples();
 
   @Query((returns) => Recipe, { nullable: true })
@@ -51,5 +51,3 @@ class RecipeResolver implements ResolverInterface<Recipe> {
     return recipe.ratings.filter((rating) => rating >= minRate).length;
   }
 }
-
-export default RecipeResolver;
