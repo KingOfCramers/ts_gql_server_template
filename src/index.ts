@@ -5,7 +5,7 @@ import path from "path";
 import { connect } from "./mongodb/connect";
 import { buildSchema } from "type-graphql";
 import { ApolloServer } from "apollo-server";
-import { RecipeResolver } from "./resolvers/recipe";
+import RecipeResolver from "./resolvers/recipe";
 
 (async () => {
   // Connect to MongoDB
