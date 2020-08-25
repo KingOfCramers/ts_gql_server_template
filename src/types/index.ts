@@ -1,0 +1,3 @@
+// Re-export everything...
+export * from "./book";
+export * from "./magazine";

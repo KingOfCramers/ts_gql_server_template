@@ -1,9 +1,9 @@
 import { Field, ObjectType } from "type-graphql";
 import { InStock } from "../shared/types";
-import { getModelForClass, prop } from "@typegoose/typegoose";
+import { prop, getModelForClass } from "@typegoose/typegoose";
 
 @ObjectType()
-export class Book extends InStock {
+export class Magazine extends InStock {
   @Field()
   @prop()
   public title: string;
@@ -14,11 +14,8 @@ export class Book extends InStock {
 
   @Field()
   @prop()
-  public author: string;
-
-  @Field()
-  @prop()
   public pages: number;
 }
 
-export const BookGoose = getModelForClass(Book);
+// And the Mongoose
+export const MagazineModel = getModelForClass(Magazine);

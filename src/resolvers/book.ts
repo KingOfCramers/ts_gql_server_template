@@ -1,7 +1,8 @@
 import { Resolver, Query, Arg } from "type-graphql";
 
-import { Book } from "./types";
-import { ReadingInput } from "../shared/inputs";
+// Import GQL and Mongoose types...
+import { Book, BookModel, Magazine, MagazineModel } from "../types";
+import { ReadingInput } from "../types/shared";
 
 const books: Book[] = [
   {
