@@ -1,48 +1,32 @@
 import { Resolver, Query, Arg } from "type-graphql";
 
 // Import GQL and Mongoose types...
-import { Book, BookModel, Magazine, MagazineModel } from "../types";
+import { Book, BookModel } from "../types";
 import { ReadingInput } from "../types/shared";
-
-const books: Book[] = [
-  {
-    title: "Harry Potter",
-    author: "JK Rowling",
-    publicationDate: new Date(),
-    pages: 400,
-    inStock: true,
-    numInStock: 10,
-  },
-  {
-    title: "Game of Thrones",
-    author: "JR Martin",
-    publicationDate: new Date(),
-    pages: 1000,
-    inStock: false,
-  },
-];
 
 @Resolver()
 export class BookResolver {
   @Query(() => Book, { nullable: true })
-  async book(@Arg("input") title: string): Promise<Book | undefined> {
-    return books.find((book) => book.title === title);
+  async book(@Arg("input") title: string): Promise<Book | null> {
+    const book = await BookModel.findOne({ title });
+    return book ? book.toObject() : null;
   }
 
   @Query(() => [Book], { nullable: true })
   async allBooks(): Promise<Book[]> {
-    return books.filter((book) => book.inStock);
+    const books = await BookModel.find({ inStock: true });
+    return books;
   }
 
   @Query(() => [Book], { nullable: true })
   async someBooks(
     @Arg("input") filter: ReadingInput
   ): Promise<Book[] | undefined> {
-    return books
-      .filter((book) => book.pages < filter.pages)
-      .filter(
-        (book) =>
-          book.publicationDate.valueOf() > filter.publicationDate.valueOf()
-      );
+    const books = await BookModel.find({})
+      .where("pages")
+      .gt(filter.pages)
+      .where("publicationDate")
+      .gt(filter.publicationDate);
+    return books;
   }
 }
